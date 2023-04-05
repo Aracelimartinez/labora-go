@@ -8,6 +8,4 @@ func main() {
 	fmt.Println("Las películas son:", films)
 	fmt.Println("La segunda película de la lista es:", films[1])
 	fmt.Println("La cantidad total de películas es:", len(films))
-
-
 }
