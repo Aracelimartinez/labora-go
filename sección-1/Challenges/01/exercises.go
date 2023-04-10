@@ -75,7 +75,7 @@ import "fmt"
 // Opción 2 - Resvuelve problema de Opción 1
 
 func main(){
-	num:= askNumbers()
+	num:= askNumber()
 	numFinal := segmentarValorPorRangos(&num)
 
 	fmt.Printf("Los números definidos son:\n" )
@@ -84,7 +84,7 @@ func main(){
 	}
 }
 
-func askNumbers() (int) {
+func askNumber() (int) {
 	var num int
 
 	fmt.Printf("Ingrese un número:")
