@@ -4,11 +4,11 @@ import "fmt"
 
 func main () {
 
-	num := askNumbers()
+	num := askNumber()
 	dayOfWeek(&num)
 }
 
-func askNumbers() (int) {
+func askNumber() (int) {
 	var num int
 
 	fmt.Printf("Ingresa un número del 1 al 7:")
