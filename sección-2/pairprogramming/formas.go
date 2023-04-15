@@ -10,20 +10,20 @@ type Shape interface {
 }
 
 type Circle struct {
-	Radio float64
+	Radius float64
 }
 
 func (circle *Circle) Area() float64 {
 	defer func() {
 		if err := recover(); err != nil {
-				fmt.Println("Error en área del círculo:", err)
+				fmt.Printf("Error en área del círculo: %s.", err)
 		}
 	}()
 
-	if circle.Radio <= 0 {
-			panic("Radio no puede ser 0 o un valor negativo")
+	if circle.Radius <= 0 {
+			panic("El radio no puede ser 0 o un valor negativo")
 	}
-	return 3.1416 * circle.Radio * circle.Radio
+	return 3.1416 * circle.Radius * circle.Radius
 }
 
 type Triangle struct {
@@ -34,7 +34,7 @@ type Triangle struct {
 func (t Triangle) Area() float64 {
 	defer func() {
 		if err := recover(); err != nil {
-				fmt.Println("Error en área del triángulo:", err)
+				fmt.Printf("Error en área del triángulo: %s.", err)
 		}
 	}()
 
@@ -53,7 +53,7 @@ type Rectangle struct {
 func (rectangle *Rectangle) Area() float64 {
 	defer func() {
 		if err := recover(); err != nil {
-				fmt.Println("Error en área del rectángulo:", err)
+				fmt.Printf("Error en el área del rectángulo: %s.", err)
 		}
 	}()
 
@@ -72,7 +72,7 @@ type RegularPolygon struct {
 func (polygon *RegularPolygon) Area() float64 {
 	defer func() {
 		if err := recover(); err != nil {
-				fmt.Println("Error en área del polígono:", err)
+				fmt.Printf("Error en área del polígono: %s.", err)
 		}
 	}()
 
@@ -92,7 +92,7 @@ type Trapezoid struct {
 func (t Trapezoid) Area() float64 {
 	defer func() {
 		if err := recover(); err != nil {
-				fmt.Println("Error en área del trapecio:", err)
+				fmt.Printf("Error en área del trapecio: %s.", err)
 		}
 	}()
 
@@ -105,8 +105,8 @@ func (t Trapezoid) Area() float64 {
 
 func main() {
 	shapes := map[string] Shape {
-	"circulo" : &Circle{Radio: 10.5},
-	"circulo errado" : &Circle{Radio: -10.5},
+	"circulo" : &Circle{Radius: 10.5},
+	"circulo errado" : &Circle{Radius: -10.5},
 	"rectángulo" : &Rectangle{Lenght: 15, Width: 10},
 	"triángulo" : &Triangle{Base: 5, Height: 10},
 	"pentágono" : &RegularPolygon{SideLong: 6, NumberOfSides: 5 },
@@ -117,16 +117,12 @@ func main() {
 	for name, shape := range shapes {
 		area := shape.Area()
 
-		// defer func() {
-		// 	if r := recover(); r != nil {
-		// 		fmt.Printf("Error en el área de %s: %v\n", name, r)
-		// 	}
-		// }()
-
-		// if area > 100 {
-		// 	panic(fmt.Sprintf("El área de %s es muy grande", name))
-		// }
-
-		fmt.Printf("El área del %s es: %.2f \n", name, area)
+		if area > 100 {
+			fmt.Printf("El área de %s es muy grande: %.2f\n", name, area)
+		} else if area == 0 {
+			fmt.Printf(" No se pudo imprimir el área\n")
+		}else {
+			fmt.Printf("El área del %s es: %.2f \n", name, area)
+		}
 	}
 }
