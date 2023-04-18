@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	est "moduloIntegrador/structEstudiante"
+	est "moduloIntegrador/estudiante"
 	"moduloIntegrador/utils"
 	"sort"
 )
