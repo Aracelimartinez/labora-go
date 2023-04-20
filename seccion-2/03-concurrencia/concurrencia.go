@@ -23,7 +23,6 @@ func sumNumbersConcurrency(num []int, wg *sync.WaitGroup, sumChannel chan int) {
 	}
 
 	sumChannel <- sum
-
 }
 
 func main() {
