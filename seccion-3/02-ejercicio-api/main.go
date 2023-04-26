@@ -42,7 +42,11 @@ func getItems(w http.ResponseWriter, r *http.Request) {
 func getItem(w http.ResponseWriter, r *http.Request) {
 	// Función para obtener un elemento específico
 	params := mux.Vars(r)
-	idItem, err := params["id"]
+	idItem, exists := params["id"]
+	if (!exists) {
+		http.Error(w, "ID no encontrado", http.StatusNotFound)
+		return
+	}
 
 	for _, item := range items {
 		if item.ID == idItem {
@@ -50,7 +54,6 @@ func getItem(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	http.Error(w, "ID no encontrado", http.StatusNotFound)
 }
 
 func createItem(w http.ResponseWriter, r *http.Request) {
