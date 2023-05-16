@@ -7,8 +7,6 @@ type planet struct {
     moons  int
 }
 
-
-
 func main() {
     planets := []planet{
         {"Mercurio", 0},
@@ -22,13 +20,6 @@ func main() {
     }
 
     for i, p := range planets {
-        fmt.Printf("%d - El planeta %s tiene %d lunas\n",i + 1, p.name,)
+        fmt.Printf("%d - El planeta %s tiene %d lunas\n",i + 1, p.name, p.moons)
     }
-}
-
-
-if  condition {
-	// código a ejecutar si la condición es verdadera
-} else {
-	// código a ejecutar si la condición es falsa
 }
